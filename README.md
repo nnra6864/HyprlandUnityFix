@@ -5,10 +5,9 @@ windows well.
 
 ## How does it work
 
-1. It sets min window size to something higher than 0 so windows actually show
-   up
-2. It prevents useless windows(such as tooltips) from stealing focus
-3. It opens popups at cursor position
+1. Windows get initial focus and are no longer insta closed thanks to the `allowsinput` window rule
+2. Tooltips no longer steal focus
+3. Certain windows, such as color pickers and component selectors, are opened at optimal positions relative to the cursor
 
 ## Usage
 
