@@ -1,9 +1,8 @@
 # Hyprland Unity Fix
 
-This is a fix needed due to Unity devs being highly competent and handling
-windows well.
+This is a fix needed due to Unity devs being highly competent and handling windows well.
 
-## How does it work
+## How it works
 
 1. Windows get initial focus and are no longer insta closed thanks to the `allowsinput` window rule
 2. Tooltips no longer steal focus
@@ -20,7 +19,7 @@ git submodule add https://github.com/nnra6864/HyprlandUnityFix hypr/HyprlandUnit
 Or clone it if you don't need updates:
 
 ```sh
-git clone git submodule add https://github.com/nnra6864/HyprlandUnityFix hypr/HyprlandUnityFix
+git clone https://github.com/nnra6864/HyprlandUnityFix hypr/HyprlandUnityFix
 ```
 
 Once that's done, simply source it in your Hyprland config:
@@ -32,8 +31,7 @@ source = ~/.config/hypr/HyprlandUnityFix/UnityFix.conf
 ### Using Nix
 
 This patch includes a flake for easy integration into a nix managed system.
-Include the flake as normal, and pass it into your home-manager or nix system
-configuration.
+Include the flake as normal, and pass it into your home-manager or nix system configuration.
 
 ```nix
 inputs.hyprland-unity-fix.url = "github:nnra6864/HyprlandUnityFix";
@@ -72,10 +70,7 @@ Then enable the module.
 
 #### Without Flakes
 
-If you aren't using flakes, you can still use this patch. You'd want to
-clone/make a submodule as usual, though, make sure to place the submodule in a
-"submodules", so nix knows to copy it to the store. From there, you'd want to
-import the `UnityFix.conf` file like so:
+If you aren't using flakes, you can still use this patch. You'd want to clone/make a submodule as usual, though, make sure to place the submodule in a "submodules", so nix knows to copy it to the store. From there, you'd want to import the `UnityFix.conf` file like so:
 
 ```nix
 {
@@ -91,11 +86,9 @@ import the `UnityFix.conf` file like so:
 
 ## OH NO, THIS WINDOW NO WORKY
 
-Run `sleep 3 && hyprctl clients`, open the window that's not working and wait
-for the output. Get the broken window info and add it to config. Make a pull
-request and I'll merge it.
+Run `sleep 3 && hyprctl clients`, open the window that's not working and wait for the output. Get the broken window info and make a new issue with details.
 
-## OH NO, MY WINDOW IMMEDIATELLY CLOSES
+## OH NO, MY WINDOW IMMEDIATELY CLOSES
 
 No worries, I made gpt write a simple script that'll constantly print newly opened windows.
 
@@ -141,4 +134,4 @@ done
 
 </details>
 
-Create a file, e.g. ListNewWindows.sh, paste the script provided above into it, and run it by doing `sh ListNewWindows.sh`.
+Create a file, e.g. ListNewWindows.sh, paste the script provided above into it, and run it `sh ListNewWindows.sh`.
