@@ -2,8 +2,13 @@
 
 UNITY_PID=$(hyprctl activewindow | awk '/pid:/ {print $2}')
 
-kitty &
-TERM_PID=$!
+if [ -n "$TERMINAL" ]; then
+    $TERMINAL &
+    TERM_PID=$!
+else
+    notify-send "Reload Unity" "Couldn't reload, \$TERMINAL is not set in env vars"
+    exit 1;
+fi
 sleep 0.25
 hyprctl dispatch setfloating pid:$TERM_PID
 hyprctl dispatch resizewindowpixel exact 1 1, pid:$TERM_PID
