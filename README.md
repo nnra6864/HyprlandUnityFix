@@ -1,12 +1,6 @@
 # Hyprland Unity Fix
 
-This is a fix needed due to Unity devs being highly competent and handling windows well.
-
-## How it works
-
-1. Windows get initial focus and are no longer insta closed thanks to the `allowsinput` window rule
-2. Tooltips no longer steal focus
-3. Certain windows, such as color pickers and component selectors, are opened at optimal positions relative to the cursor
+Collection of fixes and workarounds needed due to Unity devs being highly competent.
 
 ## Usage
 
@@ -24,7 +18,7 @@ git clone https://github.com/nnra6864/HyprlandUnityFix hypr/HyprlandUnityFix
 
 Once that's done, simply source it in your Hyprland config:
 
-```
+```ini
 source = ~/.config/hypr/HyprlandUnityFix/UnityFix.conf
 ```
 
@@ -84,54 +78,32 @@ If you aren't using flakes, you can still use this patch. You'd want to clone/ma
 }
 ```
 
+## Rules
+
+Rules fix most of the issues related to popups instantly closing and Unity being unusable in general.
+1. Windows get initial focus and are no longer insta closed thanks to the `allowsinput` window rule
+2. Tooltips no longer steal focus
+3. Certain windows, such as color pickers and component selectors, are opened at optimal positions relative to the cursor
+
+## [ReloadUnity.sh](ReloadUnity.sh)
+
+This script simply opens a terminal, makes it real small and centered, then switches focus between Unity and that terminal many times quickly.
+This, for some reason, triggers a reload.
+Unity devs truly amaze me.
+Simply add the following bind to your Hyprland config:
+```ini
+bind = $mainMod CTRL, U, exec, sh ~/.config/hypr/HyprlandUnityFix/ReloadUnity.sh
+```
+
+## [ListNewWindows.sh](ListNewWindows.sh)
+
+Simple script that utilizes hyprctl and prints data of newly opened windows.
+Useful for getting info of windows that instantly close.
+Simply run it from your terminal:
+```sh
+sh ~/.config/hypr/HyprlandUnityFix/ListNewWindows.sh
+```
+
 ## OH NO, THIS WINDOW NO WORKY
 
 Run `sleep 3 && hyprctl clients`, open the window that's not working and wait for the output. Get the broken window info and make a new issue with details.
-
-## OH NO, MY WINDOW IMMEDIATELY CLOSES
-
-No worries, I made gpt write a simple script that'll constantly print newly opened windows.
-
-<details>
-
-<summary>List New Windows</summary>
-
-```sh
-#!/bin/bash
-
-# Function to get sorted list of window IDs
-get_window_ids() {
-    hyprctl clients | grep '^Window' | awk '{ print $2 }' | sort
-}
-
-# Initial snapshot
-prev_ids=$(get_window_ids)
-
-while true; do
-    sleep 0.01
-    current_ids=$(get_window_ids)
-
-    # Compare current and previous IDs
-    if [[ "$current_ids" != "$prev_ids" ]]; then
-        # Print only the new windows
-        new_ids=$(comm -13 <(echo "$prev_ids") <(echo "$current_ids"))
-        for id in $new_ids; do
-            echo -e "\nNew window detected: $id"
-            # Extract and print full block for that window
-            hyprctl clients | awk -v id="$id" '
-                $2 == id && $1 == "Window" { in_block=1 }
-                in_block {
-                    print
-                    if ($0 ~ /^$/) in_block=0
-                }
-            '
-        done
-
-        prev_ids="$current_ids"
-    fi
-done
-```
-
-</details>
-
-Create a file, e.g. ListNewWindows.sh, paste the script provided above into it, and run it `sh ListNewWindows.sh`.
