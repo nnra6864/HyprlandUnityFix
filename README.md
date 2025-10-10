@@ -10,7 +10,7 @@ Simply add this repository as a submodule to your dotfiles:
 git submodule add https://github.com/nnra6864/HyprlandUnityFix hypr/HyprlandUnityFix
 ```
 
-Or clone it if you don't need updates:
+Or clone it:
 
 ```sh
 git clone https://github.com/nnra6864/HyprlandUnityFix hypr/HyprlandUnityFix
