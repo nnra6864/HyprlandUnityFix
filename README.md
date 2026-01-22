@@ -87,7 +87,7 @@ Rules fix most of the issues related to popups instantly closing and Unity being
 
 ## [ReloadUnity.sh](ReloadUnity.sh)
 
-This script simply opens a terminal, makes it real small and centered, then switches focus between Unity and that terminal many times quickly.
+This script simply opens [wev](https://github.com/jwrdegoede/wev), makes it floating, small and centered, then switches focus between Unity and that window many times quickly.
 This, for some reason, triggers a reload.
 Unity devs truly amaze me.
 Simply add the following bind to your Hyprland config:
