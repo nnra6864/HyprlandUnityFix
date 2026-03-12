@@ -11,6 +11,7 @@ hyprctl dispatch centerwindow pid:$WEV_PID
 for i in $(seq 1 50); do
     hyprctl dispatch focuswindow pid:$UNITY_PID
     hyprctl dispatch focuswindow pid:$WEV_PID
+    sleep 0.01
 done
 
 kill $WEV_PID
