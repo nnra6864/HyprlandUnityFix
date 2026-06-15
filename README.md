@@ -16,7 +16,17 @@ Or clone it:
 git clone https://github.com/nnra6864/HyprlandUnityFix hypr/HyprlandUnityFix
 ```
 
-Once that's done, simply source it in your Hyprland config:
+### Lua
+
+Source it in your Hyprland config:
+
+```lua
+require("HyprlandUnityFix.unity_fix")
+```
+
+### Hyprlang
+
+Source it in your Hyprland config:
 
 ```ini
 source = ~/.config/hypr/HyprlandUnityFix/UnityFix.conf
