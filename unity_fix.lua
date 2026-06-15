@@ -82,5 +82,5 @@ hl.window_rule({
     no_focus          = true,
     no_initial_focus  = true,
     focus_on_activate = false,
-    min_size          = 25, 25
+    min_size          = { 25, 25 }
 })
