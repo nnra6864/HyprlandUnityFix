@@ -2,6 +2,12 @@
 
 Collection of fixes and workarounds needed due to Unity devs being highly competent.
 
+## Warning
+
+I stopped using Unity a long time ago due to their [SAAS](https://en.wikipedia.org/wiki/Software_as_a_service) business model, so I don't even know if these fixes are still needed.
+Test the engine with and without them and come up with your own conclusion.
+Even when these were needed, there were still some minor downsides, so if Unity team resolved most of the issues, this could be harmful.
+
 ## Usage
 
 Simply add this repository as a submodule to your dotfiles:
@@ -117,3 +123,27 @@ sh ~/.config/hypr/HyprlandUnityFix/ListNewWindows.sh
 ## OH NO, THIS WINDOW NO WORKY
 
 Run `sleep 3 && hyprctl clients`, open the window that's not working and wait for the output. Get the broken window info and make a new issue with details.
+
+# ☦
+
+```
+   Ὤ
+ Ὁ   Ν
+Ι̅Ϲ̅ │ Χ̅Ϲ̅
+───┼───
+ΝΙ │ ΚΑ
+   ☦
+```
+
+Εἰς δόξαν τοῦ Θεοῦ<br>
+*To the glory of God*
+
+Τῇ Ὑπεραγίᾳ Θεοτόκῳ δόξα<br>
+*Glory to the Most Holy Theotokos*
+
+Δόξα τῷ Θεῷ πάντων ἕνεκεν<br>
+*Glory to God for all things*
+
+ΑΜΗΝ
+
+☦
